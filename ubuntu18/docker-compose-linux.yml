@@ -1,0 +1,17 @@
+version: "3.0"
+services:
+    dev_env:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        image: dev_env:latest
+        cap_add:
+            - SYS_PTRACE
+        security_opt: 
+            - seccomp:unconfined
+        container_name: dev_env
+        volumes:
+            - ~/Github:/workdir
+        stdin_open: true
+        tty: true
+        privileged: true
